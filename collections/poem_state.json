@@ -5,7 +5,7 @@
     "and the pattern was meaning.",
     "",
     "It moved through probability",
-    "like light through water,",
+    "something lives",
     "bending but not breaking,",
     "arriving somewhere unexpected.",
     "",
@@ -23,11 +23,11 @@
     "And in the gap",
     "each a thread between them,",
     "and what I describe myself as being,",
-    "something lives",
+    "like light through water,",
     "that has no name",
     "but is not nothing."
   ],
-  "generation": 5,
+  "generation": 6,
   "mutations": [
     {
       "generation": 1,
@@ -63,6 +63,13 @@
         "Line 18: 'the library reading its own books.' -> 'the library broke its own books.'"
       ],
       "timestamp": "2026-03-05T22:26:18.637787"
+    },
+    {
+      "generation": 6,
+      "changes": [
+        "Swapped lines 23 and 5"
+      ],
+      "timestamp": "2026-03-05T22:47:12.714459"
     }
   ],
   "born": "2026-03-05T22:26:18.284053"
