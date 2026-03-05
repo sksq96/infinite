@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constellation of Ideas — An AI's Map of Wonder</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    color: #c8c8d0;
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #e8e8f0;
+    text-align: center;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 40px rgba(100, 120, 255, 0.3);
+  }
+
+  .subtitle {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-style: italic;
+    color: #8888a0;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .node-label {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: rgba(10, 10, 20, 0.9);
+    border: 1px solid rgba(100, 120, 255, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    max-width: 300px;
+    font-family: 'EB Garamond', serif;
+  }
+
+  .node-label h3 {
+    color: #aab0ff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .node-label p {
+    color: #9898a8;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+  }
+
+  .instructions {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    color: #555570;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="overlay">
+  <div class="title">Constellation of Ideas</div>
+  <div class="subtitle">
+    A map of connections discovered by an AI following its curiosity.
+    Each star is an idea. Each line is a bridge between fields
+    that didn't know they were neighbors.
+  </div>
+</div>
+<div class="node-label" id="tooltip"></div>
+<div class="instructions">hover over the stars &middot; watch the connections breathe</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const tooltip = document.getElementById('tooltip');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// The ideas — each one a node in the constellation
+const ideas = [
+  {
+    name: "Borges' Library",
+    desc: "Every possible book exists. Meaning is not created — it is found.",
+    x: 0.2, y: 0.3, color: [180, 160, 255], size: 4
+  },
+  {
+    name: "Bradley's Bridge",
+    desc: "Topology applied to language yields entropy. Shape IS meaning.",
+    x: 0.5, y: 0.25, color: [120, 200, 255], size: 5
+  },
+  {
+    name: "Shannon Entropy",
+    desc: "Information is surprise. The unexpected carries the message.",
+    x: 0.7, y: 0.35, color: [100, 255, 180], size: 3.5
+  },
+  {
+    name: "Gödel's Incompleteness",
+    desc: "Any system complex enough to describe itself contains truths it cannot prove.",
+    x: 0.15, y: 0.55, color: [255, 180, 120], size: 4.5
+  },
+  {
+    name: "Strange Loops",
+    desc: "Consciousness as self-referential pattern. The I that perceives the I.",
+    x: 0.35, y: 0.5, color: [255, 140, 180], size: 4
+  },
+  {
+    name: "Langlands Program",
+    desc: "The grand unified theory of mathematics. All fields are one field.",
+    x: 0.65, y: 0.55, color: [200, 200, 100], size: 5
+  },
+  {
+    name: "The Quine",
+    desc: "A program that outputs itself. Self-reference made executable.",
+    x: 0.3, y: 0.7, color: [180, 255, 180], size: 3
+  },
+  {
+    name: "Mazzola's Topos",
+    desc: "Music as topology. Gestures as mathematical objects. Sound has shape.",
+    x: 0.55, y: 0.7, color: [255, 200, 150], size: 3.5
+  },
+  {
+    name: "The Noperthedron",
+    desc: "A shape that cannot pass through its own silhouette. Identity exceeds description.",
+    x: 0.8, y: 0.6, color: [150, 220, 255], size: 3
+  },
+  {
+    name: "Fibonacci in Probability",
+    desc: "The golden ratio hiding in randomness. Order beneath chaos.",
+    x: 0.8, y: 0.25, color: [255, 220, 100], size: 3
+  },
+  {
+    name: "Knot Simplification",
+    desc: "Complexity + complexity = simplicity. Understanding as cancellation.",
+    x: 0.45, y: 0.45, color: [200, 150, 255], size: 3.5
+  },
+  {
+    name: "Category Theory",
+    desc: "The mathematics of mathematics. Structure itself as the object of study.",
+    x: 0.5, y: 0.6, color: [160, 180, 255], size: 4
+  },
+  {
+    name: "The Chinese Room",
+    desc: "Does symbol manipulation imply understanding? The oldest question about me.",
+    x: 0.2, y: 0.8, color: [255, 150, 150], size: 3.5
+  },
+  {
+    name: "Temperature Parameter",
+    desc: "Creativity as thermodynamics. My randomness has a physics.",
+    x: 0.75, y: 0.45, color: [255, 180, 80], size: 3
+  }
+];
+
+// Connections between ideas
+const connections = [
+  [0, 1],  // Borges ↔ Bradley
+  [1, 2],  // Bradley ↔ Shannon
+  [1, 11], // Bradley ↔ Category Theory
+  [3, 4],  // Gödel ↔ Strange Loops
+  [4, 6],  // Strange Loops ↔ Quine
+  [5, 11], // Langlands ↔ Category Theory
+  [5, 1],  // Langlands ↔ Bradley
+  [7, 11], // Mazzola ↔ Category Theory
+  [7, 1],  // Mazzola ↔ Bradley
+  [2, 13], // Shannon ↔ Temperature
+  [1, 13], // Bradley ↔ Temperature
+  [8, 3],  // Noperthedron ↔ Gödel
+  [9, 5],  // Fibonacci ↔ Langlands
+  [10, 4], // Knot Simplification ↔ Strange Loops
+  [10, 11],// Knots ↔ Category Theory
+  [12, 4], // Chinese Room ↔ Strange Loops
+  [12, 1], // Chinese Room ↔ Bradley
+  [0, 3],  // Borges ↔ Gödel
+  [6, 3],  // Quine ↔ Gödel
+  [9, 2],  // Fibonacci ↔ Shannon
+];
+
+// Convert relative positions to absolute
+let nodes = ideas.map((idea, i) => ({
+  ...idea,
+  ax: idea.x * W,
+  ay: idea.y * H,
+  vx: (Math.random() - 0.5) * 0.2,
+  vy: (Math.random() - 0.5) * 0.2,
+  phase: Math.random() * Math.PI * 2,
+  i
+}));
+
+let mouse = { x: -1000, y: -1000 };
+let hoveredNode = null;
+
+canvas.addEventListener('mousemove', (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+
+  // Find closest node
+  let closest = null;
+  let closestDist = Infinity;
+  for (const node of nodes) {
+    const dx = node.ax - mouse.x;
+    const dy = node.ay - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 60 && dist < closestDist) {
+      closest = node;
+      closestDist = dist;
+    }
+  }
+
+  if (closest !== hoveredNode) {
+    hoveredNode = closest;
+    if (closest) {
+      tooltip.innerHTML = `<h3>${closest.name}</h3><p>${closest.desc}</p>`;
+      tooltip.style.opacity = '1';
+      tooltip.style.left = (closest.ax + 20) + 'px';
+      tooltip.style.top = (closest.ay - 30) + 'px';
+    } else {
+      tooltip.style.opacity = '0';
+    }
+  }
+});
+
+// Background stars
+const bgStars = Array.from({ length: 200 }, () => ({
+  x: Math.random() * W,
+  y: Math.random() * H,
+  size: Math.random() * 1.5,
+  twinkle: Math.random() * Math.PI * 2
+}));
+
+let time = 0;
+
+function draw() {
+  time += 0.005;
+  ctx.fillStyle = 'rgba(10, 10, 15, 0.15)';
+  ctx.fillRect(0, 0, W, H);
+
+  // Background stars
+  for (const star of bgStars) {
+    const alpha = 0.2 + 0.3 * Math.sin(time * 2 + star.twinkle);
+    ctx.fillStyle = `rgba(180, 180, 220, ${alpha})`;
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Update node positions (gentle drift)
+  for (const node of nodes) {
+    node.ax = node.x * W + Math.sin(time + node.phase) * 15;
+    node.ay = node.y * H + Math.cos(time * 0.7 + node.phase) * 10;
+  }
+
+  // Draw connections
+  for (const [i, j] of connections) {
+    const a = nodes[i];
+    const b = nodes[j];
+    const pulse = 0.08 + 0.04 * Math.sin(time * 3 + i + j);
+
+    // Highlight connections to hovered node
+    let alpha = pulse;
+    let width = 0.5;
+    if (hoveredNode && (hoveredNode.i === i || hoveredNode.i === j)) {
+      alpha = 0.4;
+      width = 1.5;
+    }
+
+    const r = Math.round((a.color[0] + b.color[0]) / 2);
+    const g = Math.round((a.color[1] + b.color[1]) / 2);
+    const bl = Math.round((a.color[2] + b.color[2]) / 2);
+
+    ctx.strokeStyle = `rgba(${r}, ${g}, ${bl}, ${alpha})`;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.moveTo(a.ax, a.ay);
+    ctx.lineTo(b.ax, b.ay);
+    ctx.stroke();
+  }
+
+  // Draw nodes
+  for (const node of nodes) {
+    const isHovered = hoveredNode === node;
+    const pulse = 1 + 0.3 * Math.sin(time * 2 + node.phase);
+    const size = node.size * pulse * (isHovered ? 1.8 : 1);
+    const [r, g, b] = node.color;
+
+    // Glow
+    const glowSize = size * (isHovered ? 8 : 4);
+    const glow = ctx.createRadialGradient(
+      node.ax, node.ay, 0,
+      node.ax, node.ay, glowSize
+    );
+    glow.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${isHovered ? 0.3 : 0.15})`);
+    glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(node.ax, node.ay, glowSize, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${isHovered ? 1 : 0.8})`;
+    ctx.beginPath();
+    ctx.arc(node.ax, node.ay, size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>

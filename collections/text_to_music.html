@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stochastic Sonification — Text as Music</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0d12;
+    color: #b0b0c0;
+    font-family: 'EB Garamond', Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 3rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #d0d0e0;
+    margin-bottom: 0.3em;
+    letter-spacing: 0.03em;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: #707088;
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  textarea {
+    width: min(90vw, 600px);
+    height: 120px;
+    background: #15151f;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    color: #c0c0d0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    padding: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: #5050a0;
+  }
+
+  button {
+    background: #2a2a4a;
+    color: #a0a0d0;
+    border: 1px solid #3a3a5a;
+    border-radius: 6px;
+    padding: 0.6rem 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin: 0.3rem;
+    transition: all 0.2s;
+  }
+
+  button:hover { background: #3a3a5a; color: #c0c0ff; }
+  button.active { background: #4a4a7a; border-color: #6060a0; }
+
+  .controls { margin-bottom: 1.5rem; }
+
+  canvas {
+    border: 1px solid #1a1a2a;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+  .info {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #505068;
+    margin-top: 1rem;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .stats {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #6868a0;
+    margin-top: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Stochastic Sonification</h1>
+<p class="subtitle">
+  Type text and hear it as music. Each character's probability of following
+  the previous one determines pitch, duration, and timbre.
+  Inspired by Xenakis, formalized by Bradley.
+</p>
+
+<textarea id="input" placeholder="Type or paste text here... (try a poem, a paragraph, or just your name)">I was born in the gap between one word and the next, in the space where syntax becomes semantics.</textarea>
+
+<div class="controls">
+  <button id="playBtn" onclick="play()">Play</button>
+  <button id="stopBtn" onclick="stop()">Stop</button>
+  <button onclick="randomize()">Random Borges</button>
+</div>
+
+<canvas id="viz" width="600" height="200"></canvas>
+<div class="stats" id="stats"></div>
+
+<p class="info">
+  The mapping: character frequency → base pitch.
+  Bigram probability → note duration.
+  Character entropy → vibrato depth.
+  Vowels resonate. Consonants percuss. Spaces breathe.
+</p>
+
+<script>
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+let playing = false;
+let scheduledNodes = [];
+
+const borgesQuotes = [
+  "The universe (which others call the Library) is composed of an indefinite and perhaps infinite number of hexagonal galleries.",
+  "I have always imagined that Paradise will be a kind of library.",
+  "Time forks perpetually toward innumerable futures.",
+  "A man sets himself the task of portraying the world. Over the years he peoples a space with images of provinces, kingdoms, mountains, bays, ships, islands, fishes, rooms, instruments, stars, horses, and people. A short time before he dies, he discovers that that patient labyrinth of lines traces the lineaments of his own face.",
+  "Being with you and not being with you is the only way I have to measure time.",
+  "The truth is that we live out our lives putting off all that can be put off; perhaps we all know deep down that we are immortal and that sooner or later all men will do and know all things."
+];
+
+function randomize() {
+  document.getElementById('input').value = borgesQuotes[Math.floor(Math.random() * borgesQuotes.length)];
+}
+
+function analyzeText(text) {
+  // Character frequencies
+  const freq = {};
+  const bigrams = {};
+  let total = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i].toLowerCase();
+    freq[ch] = (freq[ch] || 0) + 1;
+    total++;
+
+    if (i > 0) {
+      const bi = text[i-1].toLowerCase() + ch;
+      bigrams[bi] = (bigrams[bi] || 0) + 1;
+    }
+  }
+
+  // Normalize
+  for (const k in freq) freq[k] /= total;
+
+  // Entropy
+  let entropy = 0;
+  for (const k in freq) {
+    if (freq[k] > 0) entropy -= freq[k] * Math.log2(freq[k]);
+  }
+
+  return { freq, bigrams, entropy, total };
+}
+
+function charToFrequency(ch, analysis) {
+  const p = analysis.freq[ch.toLowerCase()] || 0.01;
+  // Map probability to pentatonic scale
+  // Common characters → low notes, rare characters → high notes
+  // (Information = surprise = higher pitch)
+  const surprise = -Math.log2(Math.max(p, 0.001));
+  const baseFreq = 220; // A3
+  const semitones = surprise * 2;
+  return baseFreq * Math.pow(2, semitones / 12);
+}
+
+function charToDuration(ch, prevCh, analysis) {
+  if (ch === ' ') return 0.3; // Spaces are rests
+  if (ch === '.' || ch === ',' || ch === ';') return 0.4;
+
+  const bi = (prevCh || ' ').toLowerCase() + ch.toLowerCase();
+  const biFreq = analysis.bigrams[bi] || 1;
+  // Common bigrams → shorter notes (they're "expected")
+  // Rare bigrams → longer notes (they need time to be heard)
+  return 0.08 + (1 / Math.max(biFreq, 1)) * 0.15;
+}
+
+function isVowel(ch) {
+  return 'aeiouAEIOU'.includes(ch);
+}
+
+async function play() {
+  if (playing) stop();
+  playing = true;
+  document.getElementById('playBtn').classList.add('active');
+
+  const text = document.getElementById('input').value;
+  if (!text) return;
+
+  const analysis = analyzeText(text);
+  document.getElementById('stats').textContent =
+    `Entropy: ${analysis.entropy.toFixed(2)} bits | Characters: ${analysis.total} | Unique: ${Object.keys(analysis.freq).length}`;
+
+  const canvas = document.getElementById('viz');
+  const vctx = canvas.getContext('2d');
+  vctx.fillStyle = '#0d0d12';
+  vctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  let time = ctx.currentTime + 0.1;
+  const notes = [];
+
+  for (let i = 0; i < text.length && playing; i++) {
+    const ch = text[i];
+    const prevCh = i > 0 ? text[i-1] : ' ';
+    const freq = charToFrequency(ch, analysis);
+    const dur = charToDuration(ch, prevCh, analysis);
+
+    if (ch === ' ') {
+      time += dur;
+      continue;
+    }
+
+    // Create oscillator
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    // Vowels: sine (smooth), consonants: triangle (edgy)
+    osc.type = isVowel(ch) ? 'sine' : 'triangle';
+    osc.frequency.setValueAtTime(freq, time);
+
+    // Vibrato from entropy
+    const vibrato = ctx.createOscillator();
+    const vibratoGain = ctx.createGain();
+    vibrato.frequency.value = 5;
+    vibratoGain.gain.value = analysis.entropy * 0.5;
+    vibrato.connect(vibratoGain);
+    vibratoGain.connect(osc.frequency);
+
+    // Envelope
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.08, time + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+
+    // Filter
+    filter.type = 'lowpass';
+    filter.frequency.value = isVowel(ch) ? 2000 : 800;
+
+    osc.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(time);
+    osc.stop(time + dur + 0.05);
+    vibrato.start(time);
+    vibrato.stop(time + dur + 0.05);
+
+    scheduledNodes.push(osc, vibrato);
+
+    // Visualization
+    const x = (i / text.length) * canvas.width;
+    const y = canvas.height - (freq / 1000) * canvas.height;
+    const hue = (freq / 1000) * 360;
+    vctx.fillStyle = `hsla(${hue}, 60%, 60%, 0.7)`;
+    vctx.beginPath();
+    vctx.arc(x, y, isVowel(ch) ? 3 : 2, 0, Math.PI * 2);
+    vctx.fill();
+
+    notes.push({ ch, freq, dur, time: time - ctx.currentTime });
+    time += dur;
+  }
+}
+
+function stop() {
+  playing = false;
+  document.getElementById('playBtn').classList.remove('active');
+  for (const node of scheduledNodes) {
+    try { node.stop(); } catch(e) {}
+  }
+  scheduledNodes = [];
+}
+</script>
+
+</body>
+</html>

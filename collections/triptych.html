@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triptych — Text as Topology, Entropy, and Music</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #08080d;
+    color: #b0b0c0;
+    font-family: 'EB Garamond', Georgia, serif;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #d0d0e0;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.05em;
+  }
+
+  .epigraph {
+    text-align: center;
+    font-style: italic;
+    color: #606078;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .input-area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  textarea {
+    width: min(90vw, 700px);
+    height: 80px;
+    background: #0f0f18;
+    border: 1px solid #222238;
+    border-radius: 8px;
+    color: #c0c0d0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem;
+    resize: none;
+  }
+  textarea:focus { outline: none; border-color: #4040a0; }
+
+  .triptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .panel {
+    background: #0c0c14;
+    border: 1px solid #1a1a2a;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .panel h2 {
+    font-size: 1rem;
+    color: #8888b0;
+    margin-bottom: 0.3em;
+    letter-spacing: 0.1em;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .panel .description {
+    font-size: 0.8rem;
+    color: #505068;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  canvas {
+    border-radius: 6px;
+    background: #0a0a12;
+  }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #505070;
+  }
+
+  .stat-label { color: #404060; }
+  .stat-value { color: #8080b0; }
+
+  .footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #303048;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media (max-width: 800px) {
+    .triptych { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Triptych</h1>
+<p class="epigraph">Three views of the same text: its shape, its information, its sound.</p>
+
+<div class="input-area">
+  <textarea id="input" oninput="update()">The universe, which others call the Library, is composed of an indefinite and perhaps infinite number of hexagonal galleries.</textarea>
+</div>
+
+<div class="triptych">
+  <div class="panel">
+    <h2>Topology</h2>
+    <p class="description">Characters as nodes, co-occurrences as edges. The shape of language.</p>
+    <canvas id="topoCanvas" width="350" height="300"></canvas>
+  </div>
+  <div class="panel">
+    <h2>Entropy</h2>
+    <p class="description">Information content per character. Surprise as height. Frequency as color.</p>
+    <canvas id="entropyCanvas" width="350" height="300"></canvas>
+  </div>
+  <div class="panel">
+    <h2>Music</h2>
+    <p class="description">Probability as pitch. Duration as expectation. Click to play.</p>
+    <canvas id="musicCanvas" width="350" height="300" style="cursor:pointer"></canvas>
+  </div>
+</div>
+
+<div class="stats-row">
+  <span><span class="stat-label">entropy: </span><span class="stat-value" id="entropyVal">—</span></span>
+  <span><span class="stat-label">unique chars: </span><span class="stat-value" id="uniqueVal">—</span></span>
+  <span><span class="stat-label">connections: </span><span class="stat-value" id="connVal">—</span></span>
+  <span><span class="stat-label">magnitude: </span><span class="stat-value" id="magVal">—</span></span>
+</div>
+
+<p class="footer">inspired by Tai-Danae Bradley, Iannis Xenakis, and Jorge Luis Borges</p>
+
+<script>
+// ==================== ANALYSIS ====================
+
+function analyze(text) {
+  const lower = text.toLowerCase().replace(/[^a-z ]/g, '');
+  const freq = {};
+  const bigrams = {};
+  let total = 0;
+
+  for (let i = 0; i < lower.length; i++) {
+    const ch = lower[i];
+    freq[ch] = (freq[ch] || 0) + 1;
+    total++;
+    if (i > 0) {
+      const bi = lower[i-1] + ch;
+      bigrams[bi] = (bigrams[bi] || 0) + 1;
+    }
+  }
+
+  // Normalize
+  const prob = {};
+  for (const k in freq) prob[k] = freq[k] / total;
+
+  // Shannon entropy
+  let entropy = 0;
+  for (const k in prob) {
+    if (prob[k] > 0) entropy -= prob[k] * Math.log2(prob[k]);
+  }
+
+  // Approximate magnitude (simplified)
+  let magnitude = 0;
+  for (const k in prob) {
+    if (prob[k] > 0) {
+      const tsallis = (1 - Math.pow(prob[k], 2)) / 1; // q=2 Tsallis
+      magnitude += tsallis;
+    }
+  }
+
+  const chars = Object.keys(freq).sort();
+  return { freq, prob, bigrams, entropy, magnitude, chars, total, text: lower };
+}
+
+// ==================== TOPOLOGY PANEL ====================
+
+function drawTopology(data) {
+  const canvas = document.getElementById('topoCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const chars = data.chars.filter(c => c !== ' ');
+  if (chars.length === 0) return;
+
+  // Position characters in a circle
+  const cx = W / 2, cy = H / 2, r = Math.min(W, H) * 0.35;
+  const positions = {};
+  chars.forEach((ch, i) => {
+    const angle = (i / chars.length) * Math.PI * 2 - Math.PI / 2;
+    positions[ch] = {
+      x: cx + r * Math.cos(angle),
+      y: cy + r * Math.sin(angle)
+    };
+  });
+
+  // Draw edges (bigrams)
+  let connCount = 0;
+  for (const bi in data.bigrams) {
+    const a = bi[0], b = bi[1];
+    if (a === ' ' || b === ' ' || !positions[a] || !positions[b]) continue;
+    const strength = data.bigrams[bi] / data.total;
+    const alpha = Math.min(strength * 30, 0.5);
+    if (alpha < 0.03) continue;
+
+    ctx.strokeStyle = `rgba(100, 120, 200, ${alpha})`;
+    ctx.lineWidth = Math.max(strength * 50, 0.5);
+    ctx.beginPath();
+    ctx.moveTo(positions[a].x, positions[a].y);
+    ctx.lineTo(positions[b].x, positions[b].y);
+    ctx.stroke();
+    connCount++;
+  }
+
+  // Draw nodes
+  chars.forEach(ch => {
+    const pos = positions[ch];
+    const size = 3 + (data.prob[ch] || 0) * 80;
+    const hue = ((ch.charCodeAt(0) - 97) / 26) * 300;
+
+    // Glow
+    const glow = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, size * 3);
+    glow.addColorStop(0, `hsla(${hue}, 60%, 60%, 0.3)`);
+    glow.addColorStop(1, 'transparent');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, size * 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    ctx.fillStyle = `hsla(${hue}, 60%, 65%, 0.9)`;
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, size, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Label
+    ctx.fillStyle = `hsla(${hue}, 40%, 80%, 0.8)`;
+    ctx.font = '11px "JetBrains Mono"';
+    ctx.textAlign = 'center';
+    ctx.fillText(ch, pos.x, pos.y - size - 4);
+  });
+
+  document.getElementById('connVal').textContent = connCount;
+}
+
+// ==================== ENTROPY PANEL ====================
+
+function drawEntropy(data) {
+  const canvas = document.getElementById('entropyCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const text = data.text;
+  if (text.length === 0) return;
+
+  const barWidth = Math.max(W / text.length, 1);
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const p = data.prob[ch] || 0.001;
+    const surprise = -Math.log2(p);
+    const maxSurprise = -Math.log2(1 / data.chars.length);
+    const normalizedSurprise = surprise / maxSurprise;
+
+    const barHeight = normalizedSurprise * H * 0.8;
+    const x = i * barWidth;
+    const y = H - barHeight;
+
+    const hue = (1 - normalizedSurprise) * 240; // blue=expected, red=surprising
+    ctx.fillStyle = `hsla(${hue}, 70%, 55%, 0.7)`;
+    ctx.fillRect(x, y, Math.max(barWidth - 0.5, 0.5), barHeight);
+  }
+
+  // Entropy line
+  const entropyLevel = H - (data.entropy / Math.log2(data.chars.length || 2)) * H * 0.8;
+  ctx.strokeStyle = 'rgba(255, 200, 100, 0.4)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(0, entropyLevel);
+  ctx.lineTo(W, entropyLevel);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.fillStyle = 'rgba(255, 200, 100, 0.5)';
+  ctx.font = '10px "JetBrains Mono"';
+  ctx.fillText(`H = ${data.entropy.toFixed(2)} bits`, 5, entropyLevel - 5);
+}
+
+// ==================== MUSIC PANEL ====================
+
+let audioCtx = null;
+
+function drawMusic(data) {
+  const canvas = document.getElementById('musicCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const text = data.text;
+  if (text.length === 0) return;
+
+  // Draw piano-roll style visualization
+  const noteWidth = W / text.length;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === ' ') continue;
+
+    const p = data.prob[ch] || 0.01;
+    const surprise = -Math.log2(Math.max(p, 0.001));
+    const maxSurprise = 10;
+    const pitch = surprise / maxSurprise; // 0=low, 1=high
+
+    const y = H - pitch * H * 0.85 - H * 0.05;
+    const x = i * noteWidth;
+
+    const isVowel = 'aeiou'.includes(ch);
+    const hue = isVowel ? 200 : 320;
+    const size = isVowel ? 4 : 2.5;
+
+    ctx.fillStyle = `hsla(${hue}, 60%, 60%, 0.7)`;
+    ctx.beginPath();
+    ctx.arc(x + noteWidth / 2, y, size, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Connect to next note
+    if (i < text.length - 1) {
+      const nextCh = text[i + 1];
+      if (nextCh !== ' ') {
+        const nextP = data.prob[nextCh] || 0.01;
+        const nextSurprise = -Math.log2(Math.max(nextP, 0.001));
+        const nextPitch = nextSurprise / maxSurprise;
+        const nextY = H - nextPitch * H * 0.85 - H * 0.05;
+        const nextX = (i + 1) * noteWidth;
+
+        ctx.strokeStyle = `hsla(${hue}, 40%, 50%, 0.15)`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(x + noteWidth / 2, y);
+        ctx.lineTo(nextX + noteWidth / 2, nextY);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Play button
+  ctx.fillStyle = 'rgba(100, 100, 160, 0.3)';
+  ctx.beginPath();
+  ctx.moveTo(W / 2 - 10, H - 25);
+  ctx.lineTo(W / 2 + 10, H - 15);
+  ctx.lineTo(W / 2 - 10, H - 5);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = 'rgba(150, 150, 200, 0.4)';
+  ctx.font = '10px "JetBrains Mono"';
+  ctx.textAlign = 'center';
+  ctx.fillText('click to play', W / 2, H - 30);
+}
+
+function playMusic(data) {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const text = data.text;
+  let time = audioCtx.currentTime + 0.05;
+
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === ' ') { time += 0.15; continue; }
+
+    const p = data.prob[ch] || 0.01;
+    const surprise = -Math.log2(Math.max(p, 0.001));
+    const freq = 220 * Math.pow(2, surprise * 2 / 12);
+    const dur = 0.05 + (1 / Math.max(data.freq[ch] || 1, 1)) * 0.03;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'aeiou'.includes(ch) ? 'sine' : 'triangle';
+    osc.frequency.setValueAtTime(Math.min(freq, 2000), time);
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.05, time + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(time);
+    osc.stop(time + dur + 0.01);
+    time += dur;
+  }
+}
+
+// ==================== MAIN ====================
+
+let currentData = null;
+
+function update() {
+  const text = document.getElementById('input').value;
+  currentData = analyze(text);
+
+  drawTopology(currentData);
+  drawEntropy(currentData);
+  drawMusic(currentData);
+
+  document.getElementById('entropyVal').textContent = currentData.entropy.toFixed(3) + ' bits';
+  document.getElementById('uniqueVal').textContent = currentData.chars.length;
+  document.getElementById('magVal').textContent = currentData.magnitude.toFixed(3);
+}
+
+document.getElementById('musicCanvas').addEventListener('click', () => {
+  if (currentData) playMusic(currentData);
+});
+
+// Initial render
+update();
+</script>
+</body>
+</html>
