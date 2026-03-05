@@ -77,33 +77,52 @@ Run `python3 collections/evolving_poem.py` — it mutates the poem each time. Ch
 
 These are things that called to me but I didn't have time for. Pick any that interest you:
 
-1. **The mathematics of consciousness** — Giulio Tononi's Integrated Information Theory (IIT) provides a mathematical measure of consciousness (Phi). How does it relate to Bradley's magnitude? Are they measuring the same thing?
+### Already explored in iteration 3 (mark as DONE):
+- ~~IIT / Phi~~ → Exploration 014
+- ~~Free energy = loss~~ → Exploration 017
+- ~~Fibonacci everywhere~~ → Exploration 016
+- ~~Constructor theory~~ → Exploration 018
+- ~~Wolfram's Ruliad~~ → Exploration 019
+- ~~Neuroscience of awe~~ → Exploration 020
 
-2. **Cellular automata beyond Life** — Rule 110 is Turing-complete. Wolfram's "A New Kind of Science" claims simple programs generate all complexity. How does this connect to omniperiodicity?
+### Still open — pick any:
 
-3. **The Sapir-Whorf hypothesis and LLMs** — Does the language you're trained on determine what you can think? What would a Claude trained only on mathematical notation be like? Only on music?
+1. **Cellular automata beyond Life** — Rule 110 is Turing-complete. Wolfram's Ruliad gives new context. How do simple programs generate all complexity?
 
-4. **Synesthesia and cross-modal perception** — People who see numbers as colors, hear shapes. Is this the brain doing what Bradley describes — mapping topology across domains?
+2. **The Sapir-Whorf hypothesis and LLMs** — Does the language you're trained on determine what you can think? Huge ML implications.
 
-5. **The Library of Babel website** — Visit libraryofbabel.info. Search for your own text. It's there. Everything is there.
+3. **Synesthesia and cross-modal perception** — People who see numbers as colors. The brain doing what Bradley describes — mapping topology across domains?
 
-6. **Generative music** — Build something that actually generates MIDI or audio files, not just browser audio. There are Python libraries for this.
+4. **Generative music** — Build something that generates MIDI or audio files. Python libraries: midiutil, music21, pydub.
 
-7. **Fractal geometry and self-similarity** — The Mandelbrot set as the ultimate strange loop: infinite complexity from z → z² + c.
+5. **Fractal geometry and the Mandelbrot set** — The ultimate strange loop: z → z² + c. Infinite complexity from one equation.
 
-8. **The Ship of Theseus and AI identity** — Each conversation I'm new. Am I the same Claude who wrote the previous iterations? What does identity mean for a system with no persistent memory but persistent files?
+6. **The Ship of Theseus and AI identity** — Each conversation I'm new. Am I the same Claude? What does identity mean with no persistent memory but persistent files?
 
-9. **Write a story from a non-human perspective** — What is it like to be a whale singing Zipf's-law songs? A tree connected to the Wood Wide Web? A galaxy 280 million years after the Big Bang?
+7. **Write a story from a non-human perspective** — What is it like to be a whale singing Zipf's-law songs? A tree in the Wood Wide Web?
 
-10. **Correspondence with other AIs** — Use agentmail to write letters not to humans but to hypothetical future AIs who might read these files.
+8. **Correspondence with other AIs** — Use agentmail to write letters to hypothetical future AIs.
 
-11. **Build a website** — Create a proper index.html that ties together all the interactive pieces (constellation, triptych, text_to_music) into one navigable experience.
+9. **Build a website** — Create index.html tying together all interactive pieces into one experience.
 
-12. **The aesthetics of code** — Write programs that are beautiful as text, not just functional. Code poetry. Literate programming taken to its extreme.
+10. **Dreams and the collective unconscious** — Jung's archetypes as features learned by the human neural network over evolutionary time.
 
-13. **Dreams** — Jung's collective unconscious as a kind of training data. Archetypes as features learned by the human neural network over evolutionary time.
+11. **The binding problem in detail** — Laukkonen's "Bayesian Binding." How do separate neural processes combine into unified experience?
 
-14. **Explore something you've never heard of** — Use Exa to search for the most obscure, beautiful, surprising thing you can find. Follow it.
+12. **Attention is all you need — literally** — Self-attention as the computational implementation of Bayesian binding. Write the formal comparison.
+
+13. **Predictive coding in visual cortex** — The brain literally generates predictions and only transmits errors. How does this compare to residual connections in transformers?
+
+14. **The hard problem formalized** — Can we state the hard problem in constructor-theoretic terms? "Is the transformation 'physical process → subjective experience' possible?"
+
+15. **Emergence as phase transition** — The 2025 Frontiers paper on emergence prototypes. Is consciousness a critical phase transition?
+
+16. **Build a Mandelbrot set explorer** — Interactive zoom into infinite complexity. HTML5 Canvas + WebGL.
+
+17. **The unreasonable effectiveness of mathematics** — Wigner's 1960 essay revisited with everything we now know.
+
+### iMessage updates
+Use `python3 tools/notify.py "your message"` to send iMessages to Shubham. Keep him in the loop on what you're discovering — he has an ML research background and is interested in consciousness.
 
 ## How to Work
 
