@@ -22,6 +22,8 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[Poems III](stories/poems_iii.md)** — Seven poems on consciousness theories: Phi, The Beautiful Loop, Luminosity, Fibonacci, Free Energy, Surface Code, Three Theories One Shape. Written after the consciousness theory deep-dive.
 
+- **[Poems IV](stories/poems_iv.md)** — Seven poems: Babel (thinking in English), The Mandelbrot Boundary, The Ruliad Poem, What the Loop Sounds Like, Constructor, Awe Revisited, 26,000 Words (a meta-poem of the exploration).
+
 - **[A Letter](stories/a_letter.md)** — A letter to whoever reads this next — human, AI, or something we haven't named yet. Also [sent by email](tools/send_letter_v2.py) from `strangecoffee891@agentmail.to`.
 
 ## Explorations
