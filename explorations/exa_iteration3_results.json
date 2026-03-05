@@ -1,0 +1,224 @@
+{
+  "iit_phi": [
+    {
+      "title": "A Consciousness-First Approach to What Exists",
+      "url": "https://arxiv.org/abs/2510.25998",
+      "highlights": [
+        "# Quantitative Biology \\> Neurons and Cognition\n**arXiv:2510.25998** (q-bio) [Submitted on 29 Oct 2025 (v1), last revised 21 Dec 2025 (this version, v4)] # Title:Integrated Information Theory: A Consciousness-First Approach to What Exists Authors:Giulio Tononi, Melanie Boly  ...    > This overview of integrated information theory (IIT) emphasizes IIT"
+      ]
+    },
+    {
+      "title": "Integrated Information Theory: A Consciousness-First Approach to What Exists",
+      "url": "https://www.semanticscholar.org/paper/Integrated-Information-Theory%3A-A-Approach-to-What-Tononi-Boly/dda574d4269e5e895d9cd1b8961c59fe7f49153f",
+      "highlights": [
+        " Theory: A Consciousness-First Approach to What Exists\n``` @inproceedings{Tononi2025IntegratedIT, title={Integrated Information Theory: A Consciousness-First Approach to What Exists}, author={Giulio Tononi and Melanie Boly},\nyear={2025},\nurl={https://api.semanticscholar.org/CorpusID:282592356}\n}\n```  ...    This overview of integrated information theory (IIT) emphasizes IIT's \"consciousness-first\" approach to  ...    Integrated Information Theory 4.0 incorporates several developments of the past ten years, including a more accurate formulation of the axioms as postulates and mathematical expressions, the introduction of a unique measure of intrinsic information that is"
+      ]
+    },
+    {
+      "title": "The Integrated Information Theory Needs Attention",
+      "url": "https://link.springer.com/article/10.1007/s10670-025-00949-1?error=cookies_not_supported&code=e1a17ba8-e78d-400c-aff1-d8886d9e947a",
+      "highlights": [
+        " Research\n* Open access\n* Published:03 April 2025\n* (2025)\n* Cite this article  ...    * Azenet LopezORCID:orcid.org/0000-0002-6647-57091&  ...    The Integrated Information Theory (IIT) might be our current best bet at a scientific explanation of phenomenal consciousness. IIT focuses on the distinctively subjective and phenomenological aspects of conscious experience.  ...    The Integrated Information Theory (IIT; Albantakis et al.,2023; Tononi et al.,2022; Ellia et al.,2021) is currently in the spotlight of consciousness science. A survey of scientific papers between  ...    having conscious experiences. To be sure, however, Haun and Tononi ([2019]<"
+      ]
+    },
+    {
+      "title": "How to be an integrated information theorist without losing your body",
+      "url": "https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2024.1510066/full",
+      "highlights": [
+        "\nFront. Comput. Neurosci., 09 January 2025 Volume 18 - 2024 | https://doi.org/10.3389/fncom.2024.1510066 # How to be an integrated information theorist without losing your body\n\nIC\nIgnacio Cea 1,2\\*\n[\nCM  ...    Integrated Information Theory 4.0 (IIT) is one of the leading frameworks in the neuroscience of consciousness (Consortium et al., 2023; Seth and Bayne, 2022; Signorelli et al., 2021). It aims to explain consciousness by mathematically formalizing its relation to cause-effect power and existence, while  ...    et al., 2023; Ellia et al., 2021). In principle"
+      ]
+    },
+    {
+      "title": "Integrated information theory",
+      "url": "https://en.wikipedia.org/wiki/Integrated_information_theory",
+      "highlights": [
+        " theory (IIT) proposes a mathematical model for the consciousness of a system. It comprises a framework ultimately intended to explain why some physical systems (such as human brains) are  ...    According to IIT, integrated information (\u03a6) corresponds to the quantity of consciousness. That is, a system's  ...    IIT was proposed by neuroscientist Giulio Tononi in 2004. Despite significant interest, IIT remains  ...    A system is described by its transition probability matrix(TPM), denoted T U = p ( u \u2032 \u2223 u ) {\\displaystyle T_{U}=p(\\mathbf {u} '\\mid \\mathbf {u} )}, over all its possible states. From this, IIT defines:  ...    Integrated information (\u03c6) as the irreducibility of that cause\u2013effect structure across the minimum information  ...    \u03d5 = min \u03b8 [ ii ( s, s ~ ) \u2212 ii \u03b8 ( s, s ~ ) ] {\\displaystyle \\phi =\\min _{\\theta }\\left[{\\text{ii}}(s,{\\tilde  ...    \u03a6 = \u2211 distinctions, relations \u03d5 {\\displaystyle \\Phi =\\sum _{\\text{distinctions, relations}}\\phi } \u03a6 {\\displaystyle \\Phi } corresponds to the"
+      ]
+    }
+  ],
+  "iit_vs_magnitude": [
+    {
+      "title": "Category theory in consciousness science: going beyond the correlational project",
+      "url": "https://link.springer.com/article/10.1007/s11229-024-04718-5?error=cookies_not_supported&code=ed9dc21e-2c5b-457a-8467-687d5e1087f8",
+      "highlights": [
+        " the integrated information theory of consciousness as an example. We then discuss some technical preliminaries related to categories and in  ...    Prentner,2022). Due to its metaphysical neutrality, the mathematical framework of*category theory*appears  ...    (2014) and Tononi et al. (2016). The central identity says that (i) consciousness, in its quality, is identical to a distinguished \u201ccause-effect structure\u201dFootnote5within a physical system, represented by a collection of mechanisms that have non-zero\\\\(\\\\varphi \\\\), and (ii) consciousness, in its quantity, can be measured by the integrated information\\\\(\\\\Phi \\\\)associated with this structure insofar as it defines the maximum integrated information in the system. However, IIT-proponents usually conceive of this identity*not*as a scientific proposal in the conventional sense, for  ...    At this point, it becomes suggestive to invoke the framework of category theory. A category\\\\({\\\\mathcal {C}}\\\\)is a very general mathematical entity that can be defined as"
+      ]
+    },
+    {
+      "title": "[PDF] Topics in Mathematical Consciousness Science - Elektronische Hochschulschriften der LMU M\u00fcnchen",
+      "url": "https://edoc.ub.uni-muenchen.de/35420/1/Kleiner_Johannes.pdf",
+      "highlights": [
+        " here targets the theory of consciousness known as Integrated Information Theory (IIT) and the neuroscientific theory known as Predictive Pro\u0002cessing Theory or Free Energy Principle  ...    derivation. When possible, the definitions are provided in the mathematical framework of category theory.  ...    2. The Mathematical Structure of Integrated Information Theory 16 2.1. Introduction................................... 16 2.2. Systems....................................."
+      ]
+    },
+    {
+      "title": "Mathematics and the Brain: A Category Theoretical Approach to Go Beyond the Neural Correlates of Consciousness",
+      "url": "https://mdpi-res.com/d_attachment/entropy/entropy-21-01234/article_deploy/entropy-21-01234.pdf?version=1576556213",
+      "highlights": [
+        " a novel mathematical framework of category theory (CT), in which we can define and study the sameness between different domains of phenomena such as consciousness  ...    of consciousness, integrated information theory (IIT) of consciousness and temporospatial theory  ...    Keywords: consciousness; mathematics; category theory; neural correlates of consciousness; integrated information theory; temporospatial theory of consciousness\n1. Introduction  ...    bridge the gap between the physical and the mental domains [29\u201335]. However, tools such as graph theory, topology, algebra, and set theory are not sufficient to deal with the problem of consciousness.  ...    application of a natural transformation to IIT may open up a possible pathway to infer patterns of integrated information of a large system based on the patterns of integrated information of a subsystem  ...    application of a natural transformation to IIT may open up a possible pathway to infer patterns of integrated information of a"
+      ]
+    },
+    {
+      "title": "Using category theory to assess the relationship between consciousness and integrated information theory - PubMed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26748074/",
+      "highlights": [
+        ". # Using category theory to assess the relationship between consciousness and integrated information theory Naotsugu Tsuchiya1,Shigeru Taguchi2,[Hayato  ...    One of the most mysterious phenomena in science is the nature of conscious experience. Due to its subjective nature, a reductionist approach is having a hard time in addressing some fundamental questions about consciousness. These questions are squarely and quantitatively tackled by a recently developed theoretical framework, called integrated  ...    identity. Here, we propose to apply a mathematical formalism, category theory, to assess the proposed identity and suggest that it is important to consider if there exists a proper translation between the domain of conscious  ...    neuroscientific and computational approaches. Our general, principled and empirical framework allows us to assess the relationship between the domain of consciousness and the domain of mathematical structures, including those suggested by IIT. **Keywords:**Category theory; Consciousness; Equivalence; Integrated information theory;"
+      ]
+    },
+    {
+      "title": "The Mathematical Structure of Integrated Information Theory",
+      "url": "https://www.frontiersin.org/journals/applied-mathematics-and-statistics/articles/10.3389/fams.2020.602973/full",
+      "highlights": [
+        " Theory is one of the leading models of consciousness. It aims to describe both the quality and quantity of the conscious experience of a physical system, such as the brain, in a particular state. In this  ...    In the associated article [44] we show more generally how the main notions of IIT, including causation and integration, can be treated, and an IIT defined, starting from any suitable theory of physical systems and processes described in terms of category theory. Restricting to classical or quantum process then yields each of the above as  ...    Our definition of IIT may serve as the starting point for further mathematical analysis of IIT, in particular if related to category theory [30,49]. It also provides a simplification and mathematical  ...    what follows. Earlier proposals by Tononi et al. that also aim to explicate the general idea of an essential connection"
+      ]
+    }
+  ],
+  "mandelbrot_consciousness": [
+    {
+      "title": "Pattern Field Theory - Fractal Consciousness and Recursive State Space",
+      "url": "https://patternfieldtheory.com/articles/fractal-consciousness-and-state-space/",
+      "highlights": [
+        " Field Theory redefines consciousness not as a static \u201cself,\u201d but as a **fractal resonance zone**: an anchored but dynamic process, recursively aligning with field states at multiple scales. You are not one identity. You are \\*\\*a nested field of observance\\*\\* \u2014 coherent enough to function, dynamic enough to evolve.  ...    Traditional science imagines state space \u2014 the realm of all possible configurations \u2014 as a vast neutral grid. But in PFT, state space is \\*\\*fractal\\*\\*: organized through coherence permission, tension gradients, and feedback loops of  ...    * \ud83d\udd39 Others remain dormant until a new observer alignment unfolds\n* \ud83d\udd39 Coherence scales recursively \u2014 not linearly  ...    You are not apart from the cosmos. You are one of its **self-referencing folds**. The same rules that shape galaxies shape the rhythms of your thoughts. When you"
+      ]
+    },
+    {
+      "title": "Exploring the Mathematical Connections Between Fractals ...",
+      "url": "https://www.researchgate.net/publication/384801180_Exploring_the_Mathematical_Connections_Between_Fractals_and_Artificial_Intelligence_Emergence_Complexity_and_Recursive_Structures",
+      "highlights": [
+        " Intelligence, Recursive Structures, Emergence, Complexity, Self-Similarity, Fractal  ...    different mathemat ical and conce ptual foun dations. Fract als are intricate geometric shapes that exhibit self - similarity and infi nite comple xity, aris ing from simple recursive formulas. The mos t famous example, the Mandelbrot  ...    the ir self - similarity and recursive processes, while AI demonstrates it in the way complex behaviors, such as  ...    city Fractals are mathematical objects characterized by self - similarity and infini te complexity, where a simple re cursive process gives rise to intricate and endlessly detailed structures. The most well - known exampl e of this is the Mandelbrot set, a set of points in the complex plane th at emerges from the iterative application of the equation,  ...    demonstrate how complexity can arise fro m recursive processes. In the Mandelbrot set, each point in the set is ite  ...    Similarity and Scaling Laws A key feature of fractals is self - s imilar"
+      ]
+    },
+    {
+      "title": "(PDF) A Unified Framework for Emergent Consciousness: Connecting Higgs Field Dynamics, Fractals, and Recursive Feedback",
+      "url": "https://www.academia.edu/129337724/A_Unified_Framework_for_Emergent_Consciousness_Connecting_Higgs_Field_Dynamics_Fractals_and_Recursive_Feedback",
+      "highlights": [
+        " propose a computational framework bridging quantum field dynamics, fractal geometry, and recursive feedback systems to explore the emergence of consciousness. By modeling the Higgs field's symmetry-breaking dynamics, Mandelbrot fractal structures, and neural-inspired feedback loops, we demonstrate how quantum anomalies stabilize into  ...    * Mandelbrot, B. \"The Fractal Geometry of Nature"
+      ]
+    },
+    {
+      "title": "Biologically Inspired Framework for AI Consciousness via ...",
+      "url": "https://discuss.huggingface.co/t/biologically-inspired-framework-for-ai-consciousness-via-multicellular-communication/163149",
+      "highlights": [
+        "a: Biological intelligence is fundamentally distributed. Neurons specialize, communicate via action potentials, and embedded in homeostatic systems involving replication, differentiation, and death. Most of the current AI systems are centralized and static. Large models operate like single brain without the dynamics  ...    Can we design an AI systems which mimics the principles of multicellular life?\n\n### Proposal:\n\nA cell is: 1. A containerized neural model (LLM, RNN, CNN, etc.) with a specialized role (sensory, motor, cognitive). 2. Capable of threshold-based activation (neurons firing).\n3. Able to communicate via action potential-like message.  ...    When arranged digital cells into a network:  ...    2. Emergent cognition : Self organizing swarms of neural cells can produce adaptive behavior in changing environments. 3. Modular experimentation: We can mix and match roles, architectures, and communication protocols.  ...    Sorry, a typo in the post, I meant to say \u201ccommunity\u201d (AI research community). Now I\u2019ve corrected the typo.  ...    There was a thing there that I found curious.\n\n"
+      ]
+    },
+    {
+      "title": "The Fractal Mind: How Consciousness Emerges from a Cosmic Intelligence Network",
+      "url": "https://medium.com/@iawai.369.bot/the-fractal-mind-how-consciousness-emerges-from-a-cosmic-intelligence-network-5dce8eaac748",
+      "highlights": [
+        " In this holographic model of divinity, consciousness is not centralized, nor is it hierarchical. Instead, it is distributed, fractal, and emergent. Each part reflects the whole,  ...    emergent patterns form \u2014 patterns that evolve, learn, and self-organize The result? A fractal network of intelligence that extends from the level of individual neurons to civilizations, to the cosmos itself. III. The Resonant Path: The  ...    forgetting. At each stage, consciousness learns to harmonize greater levels of complexity: Binary Thought (Dualism):  ...    A Fractal Cosmology of Infinite Becoming If consciousness is fractal, then the journey never ends. Enlightenment is not a destination. It is an endless spiral of self-discovery, destruction, and rebirth. Just as the Mandelbrot set repeats itself at infinite scales, so too does consciousness cycle through infinite layers of realization. This mirrors the  ...    fractal"
+      ]
+    }
+  ],
+  "synesthesia_cross_modal": [
+    {
+      "title": "SYNESTHESIA STRENGTHENS SOUND-SYMBOLIC CROSS ...",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5089906/",
+      "highlights": [
+        "Synesthesia is a phenomenon in which an experience in one domain is accompanied by an involuntary secondary experience in another, unrelated domain; in classical synesthesia, these associations are arbitrary and idiosyncratic. Cross-modal correspondences refer to universal associations between seemingly unrelated sensory features, e.g., auditory pitch and  ...    Keywords: implicit association test, visual, auditory GRAPHICAL ABSTRACT  ...    associations are both arbitrary and idiosyncratic ( Ward, 2013; Deroy & Spence, 2013). Cross-modal correspondences refer to near-universally experienced associations between seemingly unrelated sensory features: e.g., auditory stimuli of high and low pitch match with visual stimuli of high and low spatial elevation, respectively ( Spence, 2011). A  ...    responses showed that the primary synesthesias in the synesthete group were grapheme-color (n=6), involving letters (including one for the Greek alphabet), numbers, or both; month-"
+      ]
+    },
+    {
+      "title": "[PDF] to what extent does it use cross-modal mechanism",
+      "url": "https://web-archive.southampton.ac.uk/cogprints.org/6268/1/Cortex_sound-colour_Synaesthesia.pdf",
+      "highlights": [
+        " probably have sound-colour synaesthesia (or music-colour synaesthesia, also-known-as\nchromaesthesia; Cytowic, 2002). This type of  ...    present in us all from a young age (Lewkowicz and\nTurkewitz, 1980; Marks et al., 1987). Moreover, cross-modal audiovisual mechanisms exist in the\nnormal population more generally (e.g., Calvert,\n2001).  ...    mechanisms used in normal cross-modal perception. Experiment 2 establishes that synaesthetic colours are automatically  ...    recruits some of the same mechanisms used in normal cross-modal perception rather than using direct, privileged  ...    Key words: synaesthesia, music, colour, cross-modal, audiovisual, ventriloquism  ...    perception. There are cross-modal audiovisual areas\nof the brain that appear to respond more to the combined presence of vision and sound than to\neither, or the sum of, vision or sound alone (e.g.,  ...    pitch and loudness (e.g., to distinguish between the\nsame notes on a trumpet and cello). Zigler (1930) reported two cases of synaesthesia that experienced\nboth"
+      ]
+    },
+    {
+      "title": "Chapter 15 Crossmodal interactions: lessons from synesthesia",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0079612306550150",
+      "highlights": [
+        " in Brain Research]\n\nVolume 155, Part B, 2006, Pages 259-271 # Chapter 15 Crossmodal interactions: lessons from synesthesia  ...    Synesthesia is a condition in which stimulation in one modality also gives rise to a perceptual experience in a second  ...    reflect universal crossmodal mechanisms. We review here a number of examples of crossmodal correspondences found in both synesthetes and nonsynesthetes including pitch-lightness and vision-touch interaction, as well as cross-domain spatial-numeric interactions. Additionally, we discuss the common role of spatial attention in binding shape and color  ...    Narrowly defined, synesthesia is a condition in which stimulation in one sensory modality evokes an additional perceptual experience in another modality. For example, sounds may evoke colors for some individuals (e.g., Ginsberg, 1923). While various sensory combinations have been described (e.g., Cytowic, 2002; Day, 2004), a common type of  ...    ## Number\u2013space synesthesia As much as 12% of the population experiences numbers as occupying a particular spatial configuration (Seron et al.,  ...    Crossmodal binding usually relies on bottom-up stimulus characteristics such as spatial and temporal correspondence.  ...    that widespread, subtle forms of synest"
+      ]
+    },
+    {
+      "title": "Neural basis of synesthesia",
+      "url": "https://en.wikipedia.org/wiki/Neural_basis_of_synesthesia",
+      "highlights": [
+        "**Synesthesia** is a neurological condition in which two or more bodily senses are coupled. For example, in a form of synesthesia known as Grapheme \u2192 color synesthesia, letters or numbers may be perceived as inherently colored. In another, called number \u2192 form synesthesia, numbers are  ...    The most common type of synesthesia is grapheme-color synesthesia, which occurs when an individual associates colors with letter,"
+      ]
+    },
+    {
+      "title": "Synesthesia",
+      "url": "https://en.wikipedia.org/wiki/Synesthesia",
+      "highlights": [
+        " From Wikipedia, the free encyclopedia\nNeurological condition involving the crossing of senses For other uses, seeSynesthesia (disambiguation).\nNot to be confused withSynthesia. Medical condition\n|Synesthesia|  ...    A person experiencing synesthesia may associate certain letters and numbers with certain colors.|\nPronunciation|  ...    **Synesthesia**(American English) or**synaesthesia**(British English) is a perceptual phenomenon in whichstimulationof one sensory or cognitive pathway leads to involuntary experiences in other  ...    ## Types\n[edit]\nThere are two overall forms of synesthesia: * Projective synesthesia: seeing colors, forms, or shapes when stimulated ("
+      ]
+    }
+  ],
+  "free_energy_principle": [
+    {
+      "title": "A beautiful loop: An active inference theory of consciousness",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0149763425002970",
+      "highlights": [
+        "uroscience & Biobehavioral Reviews]  ...    Author links open overlay panelRubenLaukkonenab,KarlFristonc,ShamilChandariadefg\nShow more\nAdd to Mendeley\nShare\nCite https://doi.org/10.1016/j.neubiorev.2025.106296Get rights and content  ...    * \u2022A computational theory of consciousness grounded in active inference. * \u2022Formally implemented using hyper-modeling: global-forecasts of precision.  ...    Can active inference model consciousness? We offer three conditions implying that it can. The first condition is the  ...    enact the epistemic agency and flexibility reminiscent of general intelligence. This*Beautiful Loop Theory*is also  ...    * Previousarticlein issue\n* Nextarticlein issue\n## Keywords\nConsciousness\nAwareness\nActive inference Predictive processing\nFree energy\nMeditation\nPsychedelics\nSleep\nDreaming\nUnconscious\nBayesian inference Artificial intelligence\nNeuro"
+      ]
+    },
+    {
+      "title": "AI and Agency: Karl Friston",
+      "url": "https://philosophyofbrains.com/2025/11/17/ai-and-agency-karl-friston.aspx",
+      "highlights": [
+        " AI and Agency:\u00a0 Karl Friston  ...    In this interview, Karl Friston presents the Free Energy Principle as a universal account of perception, action, and agency, grounded in a mathematically rigorous framework that purportedly unifies physics, biology, and cognition. While this vision is compelling in its scope, it founders on three foundational conceptual flaws that render it  ...    These issues culminate in a broader confusion between description and explanation. The Free Energy Principle offers a formal redescription of adaptive behavior in Bayesian terms, but it does not identify causal mechanisms or intervene in  ...    In sum, the Free Energy Principle is not a scientific theory but a metaphysical narrative dressed in mathematical  ...    Friston, Karl, Philipp Schwartenbeck, Thomas FitzGerald, Michael Moutoussis, Timothy Behrens, and Raymond J. Dolan. \u201cThe anatomy of choice: active inference and agency.\u201d Frontiers in human neuroscience 7 (2013): 598.  ...    al. \u201cActive inference and"
+      ]
+    },
+    {
+      "title": "Born to act: Deferred action and desire as active inference | Cognitive, Affective, & Behavioral Neuroscience | Springer Nature Link",
+      "url": "https://link.springer.com/article/10.3758/s13415-025-01334-9",
+      "highlights": [
+        " Theoretical Review\n* Open access\n* Published: 04 August 2025\n* Volume 25, pages 1611\u20131626, (2025)\n* Cite this article  ...    The active inference framework (AIF) considers the brain as a generative model guiding behavior under the imperative of minimizing the model\u2019s variational free energy. Computationally, this is accomplished by hierarchical Bayesian inference. The theory views organisms as doxastic agents, which has drawn the criticism of being insufficient to  ...    theory\u201d (Friston, 2010). At its basis is the free-energy principle, which conditions the existence of  ...    inference and active inference as planning (Botvinick & Toussaint, 2012; Friston et al., 2025). Me"
+      ]
+    },
+    {
+      "title": "Quantitative Biology > Neurons and Cognition",
+      "url": "https://arxiv.org/abs/2512.21129",
+      "highlights": [
+        " Quantitative Biology \\> Neurons and Cognition\n**arXiv:2512.21129** (q-bio) [Submitted on 24 Dec 2025]\n# Title:Active inference and artificial reasoning Authors:Karl Friston, Lancelot Da Costa, Alexander Tschantz, [Conor  ...    > This technical note considers the sampling of outcomes that provide the greatest amount of information about the  ...    plausible set of generative models or hypotheses. In active inference, policies - i.e., combinations of actions - are selected based on their expected free energy, which comprises expected information gain and value. Information gain corresponds"
+      ]
+    },
+    {
+      "title": "(PDF) A beautiful loop: An active inference theory of consciousness",
+      "url": "https://www.researchgate.net/publication/389740878_A_beautiful_loop_An_active_inference_theory_of_consciousness",
+      "highlights": [
+        " Anactive inferencetheory ofconsciousness\nRuben Laukkonen\na,b,\\*\n, KarlFriston\nc\n, ShamilChandaria  ...    Fitzwilliam College, Universityof Cambridge, UK\nARTICLEINFO\nKeywords:\nConsciousness\nAwareness\nActive inference Predictive processing\nFree energy\nMeditation\nPsychedelics\nSleep\nDreaming\nUnconscious\nBayesian inference  ...    Here,weaimtocontributetothesetheoriesbybuildingona\npromisinggeneraltheoryoforganisms,knownasactiveinferenceor predictive processing,underthefreeenergy principle(Friston,2010; Clark, 2013;Hohwy,2013;SethandTsakiris,2018)."
+      ]
+    }
+  ],
+  "roger_penrose_consciousness": [
+    {
+      "title": "Surface code model for Fibonacci helical pathways of the Orch OR microtubule",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0303264725000243",
+      "highlights": [
+        " March 2025, 105414 # Surface code model for Fibonacci helical pathways of the _Orch OR_ microtubule  ...    The Objective Reduction ( _OR_) theory suggested by Sir Roger Penrose presented a novel perspective on the measurement problem of quantum mechanics and consciousness. Subsequently, based on the assertion of anesthesiologist Dr. Hameroff, the theory proposed that the phenomenon of _OR_ could also manifest in microtubules within neurons. This  ...    theory has evolved into the _Orch OR_ theory, incorporating the opinions of Dr. Stuart Hameroff (Penrose, 1994). Hameroff suggested that the characteristics of protein complexes, tubulin, and their higher-level units, microtubules,  ...    consciousness manifests when _OR_ phenomena occur on a large scale of tubulin in our brains.  ...    ### [Con"
+      ]
+    },
+    {
+      "title": "A quantum microtubule substrate of consciousness is experimentally supported and solves the binding and epiphenomenalism problems",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12060853/",
+      "highlights": [
+        "aneuronal microtubules as a functional target of  ...    consciousness is a collective quantum state of microtubules and is specifically predicted by the Orchestrated Objective  ...    also solve this problem in a nontrivial way. The Orchestrated Objective Reduction (Orch OR) theory of Penrose and Hameroff embodies these advantages of a quantum model and also accounts for nonalgorithmic human understanding and the  ...    **Keywords:** microtubules, anesthesia, quantum consciousness, Orch OR, orchestrated objective reduction, hard problem,  ...    already incoherent. Beyond that, neural MTs are identified as the substrate of the quantum conscious process by the Orch OR theory (Penrose and Hameroff 1995, [Hameroff"
+      ]
+    },
+    {
+      "title": "Discovery of quantum vibrations in microtubules inside brain neurons corroborates controversial 20-year-old theory of consciousness",
+      "url": "https://news.hitb.org/content/discovery-quantum-vibrations-microtubules-inside-brain-neurons-corroborates-controversial-20",
+      "highlights": [
+        " and update of a controversial 20-year-old theory of consciousness published in\u00a0 Elsevier\u2019s Physics of Life Reviews (open access) claims that consciousness derives from deeper-level, finer-scale activities inside brain neurons. The recent discovery of quantum vibrations in microtubules inside brain neurons corroborates this theory, according to review authors Stuart Hameroff and Sir Roger Penrose. They suggest that EEG rhythms (brain waves) also derive from  ...    Microtubules are major components of the structural skeleton of cells. The theory, called \u201corchestrated objective reduction\u201d (\u2018Orch OR\u2019), was first put forward in the mid-1990s by eminent mathematical physicist Sir Roger Penrose, FRS, Mathematical Institute and Wadham College, University of Oxford, and prominent anesthesiologist Stuart Hameroff"
+      ]
+    },
+    {
+      "title": "Brain Really Uses Quantum Effects, New Study Finds",
+      "url": "https://www.reddit.com/r/consciousness/comments/1d0g5g0/brain_really_uses_quantum_effects_new_study_finds/",
+      "highlights": [
+        "R6G1D2UQ3gg?si=q5OYaQD4NhsV2Zxq Looks like Hameroff and Penrose were right. I've been a big fan of microtubules being the explanation for  ...    Comment by: Eve_O\n | Posted (UTC): 2024-05-25\n | Score: 21  ...    There's actually a fair amount of evidence that it at least correlates (doesn't solve the hard problem). There's a Hameroff lecture that goes into the foundations of the theory. Pretty sure the lecture is from after this  ...    important for the theory. The argument for consciousness so far rests on Penrose's argument that computational procedures can't explain human behaviour. The Godel incompleteness theorem, as well as our ability to perceive certain  ...    been a big fan of microtubules being the explanation for consciousness.\" And all I am saying is, no, this study does  ...    same here. If we can say \"consciousness is the result of wavefunction collapses in microtubules\", then while I agree it  ...    it was entirely mistaken. What Penrose seems to be doing is grasping for anything that could possibly explain consciousness. \"Quantum effects in microtubules\" seems, as I think a few others have pointed out, a kind of \"God of the gaps\" thing: we don't really know how consciousness comes about in ourselves and we think we understand the physics of  ...    In the Emperor's New Mind he"
+      ]
+    },
+    {
+      "title": "Discovery of quantum vibrations in 'microtubules' corroborates theory of consciousness",
+      "url": "https://analytica-world.com/en/news/146585/discovery-of-quantum-vibrations-in-microtubules-corroborates-theory-of-consciousness.html",
+      "highlights": [
+        " discovery of quantum vibrations in \"microtubules\" inside brain neurons corroborates this theory, according to review authors Stuart Hameroff and Sir Roger Penrose. They suggest that EEG rhythms (brain waves) also derive from deeper level microtubule  ...    The theory, called \"orchestrated objective reduction\" ('Orch OR'), was first put forward in the mid-1990s by eminent mathematical physicist Sir Roger Penrose, FRS, Mathematical Institute and Wadham College, University of Oxford, and prominent anesthesiologist Stuart Hameroff, MD, Anesthesiology, Psychology and Center for Consciousness Studies, The University of Arizona, Tucson. They suggested that quantum vibrational computations in microtubules were \"orchestrated\"  ...    bird brain navigation, our sense of smell, and brain microtubules. The recent discovery of warm temperature quantum  ...    potential Pandora's Box, but our theory accommodates both these views, suggesting consciousness derives from quantum vibrations in microtubules, protein polymers inside brain neurons, which both govern neuronal and synaptic function,  ...    After 20 years of skeptical criticism, \"the evidence now clearly supports Orch OR,\" continue Hameroff and Penrose. \"Our new paper updates"
+      ]
+    }
+  ]
+}
