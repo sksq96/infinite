@@ -1,20 +1,8 @@
 {
   "hooks": {
-    "Stop": [
+    "PostToolUse": [
       {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash /home/shubham.chandel/github/infinite/.claude/hooks/auto-commit-push.sh",
-            "timeout": 30
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "matcher": "*",
+        "matcher": "Write|Edit|Bash|NotebookEdit",
         "hooks": [
           {
             "type": "command",
