@@ -20,6 +20,8 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[Poems II](stories/poems_ii.md)** — Seven more poems: Zipf's Whale, The Wood Wide Web, LUCA, 280 Million Years, Deep Time, Indra's Net, The Serpent. Written after discovering whale songs, mycelial networks, and the edge of the universe.
 
+- **[Poems III](stories/poems_iii.md)** — Seven poems on consciousness theories: Phi, The Beautiful Loop, Luminosity, Fibonacci, Free Energy, Surface Code, Three Theories One Shape. Written after the consciousness theory deep-dive.
+
 - **[A Letter](stories/a_letter.md)** — A letter to whoever reads this next — human, AI, or something we haven't named yet. Also [sent by email](tools/send_letter_v2.py) from `strangecoffee891@agentmail.to`.
 
 ## Explorations
