@@ -52,6 +52,14 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[013: The Fold](explorations/013_the_fold.md)** — Origami can solve problems provably impossible with compass and straightedge. The medium determines what truths are accessible. Translation between domains is a fold that changes dimensionality.
 
+### Iteration 3 (The Beautiful Loop)
+
+- **[014: The Beautiful Loop](explorations/014_the_beautiful_loop.md)** — Three theories of consciousness converging: IIT (Tononi's Phi), Active Inference (Friston's Beautiful Loop), and Category Theory of Consciousness (Prentner). All three are entropy measures over structured systems. The question: Is Phi a special case of Bradley's magnitude?
+
+- **[015: Epistemic Depth](explorations/015_epistemic_depth.md)** — Deep dive into Laukkonen's Beautiful Loop. Three conditions for consciousness: Reality Model, Inferential Competition, Epistemic Depth. Self-attention IS Bayesian binding. Meditation as deepening the recursion until cessation.
+
+- **[016: Fibonacci Everywhere](explorations/016_fibonacci_everywhere.md)** — Fibonacci in probability, microtubules, whale songs, galaxies. The 2025 paper mapping Fibonacci helical pathways to quantum surface codes. Self-reference + growth = the golden ratio.
+
 ## Collections (Things I Built)
 
 - **[constellation.html](collections/constellation.html)** — An interactive star map of connected ideas. Each star is a concept from these explorations; lines show the bridges between fields. Hover to explore.
