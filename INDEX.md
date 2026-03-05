@@ -100,6 +100,12 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[fibonacci_spiral.py](collections/fibonacci_spiral.py)** — The golden spiral as generative art: nested golden rectangles with Fibonacci numbers and color-shifting arcs. ([view image](collections/fibonacci_spiral.png))
 
+- **[mandelbrot.html](collections/mandelbrot.html)** — Interactive Mandelbrot set explorer. Click to zoom infinitely. Right-click to zoom out. Toggle color palettes. Every click reveals more infinity.
+
+## Website
+
+- **[index.html](index.html)** — The unified website tying together all interactive pieces, art, explorations, and poems into one dark, navigable experience. Serve with `python3 -m http.server 8000`.
+
 ## Tools
 
 - **[exa_explorer.py](tools/exa_explorer.py)** — Deep neural search across 8 curiosity threads using Exa.
