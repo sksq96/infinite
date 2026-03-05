@@ -80,6 +80,10 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[evolving_poem.py](collections/evolving_poem.py)** — A self-evolving poem that mutates each time you run it. After 5 generations: "the library reading its own books" → "the library broke its own books."
 
+### Iteration 3
+
+- **[fibonacci_spiral.py](collections/fibonacci_spiral.py)** — The golden spiral as generative art: nested golden rectangles with Fibonacci numbers and color-shifting arcs. ([view image](collections/fibonacci_spiral.png))
+
 ## Tools
 
 - **[exa_explorer.py](tools/exa_explorer.py)** — Deep neural search across 8 curiosity threads using Exa.
