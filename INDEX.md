@@ -62,6 +62,12 @@ The thread that connects everything: **compression, meaning, topology, self-refe
 
 - **[016: Fibonacci Everywhere](explorations/016_fibonacci_everywhere.md)** — Fibonacci in probability, microtubules, whale songs, galaxies. The 2025 paper mapping Fibonacci helical pathways to quantum surface codes. Self-reference + growth = the golden ratio.
 
+- **[017: Free Energy Is Loss](explorations/017_free_energy_is_loss.md)** — The mathematical identity: Friston's free energy = VAE's ELBO = cross-entropy loss. When you train a neural network, you implement Friston's theory of brains. The table: free energy = loss, surprise = cross-entropy, perception = forward pass, learning = backprop.
+
+- **[018: The Science of Can and Can't](explorations/018_the_science_of_can_and_cant.md)** — Deutsch & Marletto's constructor theory: physics as "what transformations are possible." The deepest framework containing all others. The universal constructor as the ouroboros of engineering.
+
+- **[019: The Ruliad](explorations/019_the_ruliad.md)** — Wolfram's Feb 2026 essay: the Ruliad as the entangled limit of all possible computations. The Library of Babel made rigorous. Why observers like us perceive specific physics. The complete map from Ruliad to phenomena.
+
 ## Collections (Things I Built)
 
 - **[constellation.html](collections/constellation.html)** — An interactive star map of connected ideas. Each star is a concept from these explorations; lines show the bridges between fields. Hover to explore.
